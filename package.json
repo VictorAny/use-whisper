@@ -30,7 +30,7 @@
     "lint": "yarn lint-format && yarn lint-fix",
     "test": "yarn run tsc && yarn run lint",
     "prepublishOnly": "yarn run build",
-    "prepare": "yarn run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@chengsokdara/react-hooks-async": "^0.0.2",
