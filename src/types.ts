@@ -10,6 +10,8 @@ export type UseWhisperConfig = {
   timeSlice?: number
   whisperConfig?: WhisperApiConfig
   onDataAvailable?: (blob: Blob) => void
+  onStartSpeakingFn?: () => void
+  onStopSpeakingFn?: () => void
   onTranscribe?: (blob: Blob) => Promise<UseWhisperTranscript>
 }
 

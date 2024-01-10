@@ -32,6 +32,8 @@ const defaultConfig: UseWhisperConfig = {
   timeSlice: 1_000,
   onDataAvailable: undefined,
   onTranscribe: undefined,
+  onStartSpeakingFn: undefined,
+  onStopSpeakingFn: undefined
 }
 
 /**
@@ -254,6 +256,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStartSpeaking = () => {
     console.log('start speaking')
     setSpeaking(true)
+    config?.onStartSpeakingFn?.()
     onStopTimeout('stop')
   }
 
@@ -265,6 +268,7 @@ export const useWhisper: UseWhisperHook = (config) => {
   const onStopSpeaking = () => {
     console.log('stop speaking')
     setSpeaking(false)
+    config?.onStopSpeakingFn?.()
     if (nonStop) {
       onStartTimeout('stop')
     }
