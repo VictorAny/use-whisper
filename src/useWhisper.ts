@@ -469,7 +469,9 @@ export const useWhisper: UseWhisperHook = (config) => {
         }
         const recorderState = await recorder.current.getState()
         if (recorderState === 'recording') {
-          const blob = new Blob(chunks.current, {
+          // Stop sending entire current chunk and instead send the last 3.
+          let lastThreeChunks = chunks.current.slice(-3)
+          const blob = new Blob(lastThreeChunks, {
             type: 'audio/mpeg',
           })
           const file = new File([blob], 'speech.mp3', {
