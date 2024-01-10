@@ -33,7 +33,7 @@ const defaultConfig: UseWhisperConfig = {
   onDataAvailable: undefined,
   onTranscribe: undefined,
   onStartSpeakingFn: undefined,
-  onStopSpeakingFn: undefined
+  onStopSpeakingFn: undefined,
 }
 
 /**
@@ -439,6 +439,7 @@ export const useWhisper: UseWhisperHook = (config) => {
           } else {
             const file = new File([blob], 'speech.mp3', { type: 'audio/mpeg' })
             const text = await onWhispered(file)
+            config?.onTextTranscribeFn?.(text)
             console.log('onTranscribing', { text })
             setTranscript({
               blob,

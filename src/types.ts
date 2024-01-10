@@ -12,6 +12,7 @@ export type UseWhisperConfig = {
   onDataAvailable?: (blob: Blob) => void
   onStartSpeakingFn?: () => void
   onStopSpeakingFn?: () => void
+  onTextTranscribeFn?: (text) => void
   onTranscribe?: (blob: Blob) => Promise<UseWhisperTranscript>
 }
 
